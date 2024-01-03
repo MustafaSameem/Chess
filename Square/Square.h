@@ -1,10 +1,5 @@
-//
-// Created by musta on 2023-12-22.
-//
-
-#ifndef CHESS_ENGINE_SQUARE_H
-#define CHESS_ENGINE_SQUARE_H
-#include "Piece.h"
+#pragma once
+#include "../Piece/Piece.h"
 
 //forward declaration to avoid circular dependency
 class Piece;
@@ -35,18 +30,3 @@ public:
 
 
 
-class Board{
-private:
-    Square* location[8][8];
-
-public:
-    Board();
-    void display();
-};
-
-
-
-
-
-
-#endif //CHESS_ENGINE_SQUARE_H
