@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 using std::cout;
+using std::endl;
 
 
 
@@ -22,7 +23,7 @@ void Piece::setWhite(bool isWhite) {
 bool Piece::getIsDead() const {
     return isDead;
 }
-bool Piece::getIsWhite() const{
+bool Piece::getIsWhite() const {
     return isWhite;
 }
 
@@ -39,7 +40,7 @@ char Pawn::getType() const {
         return 'p';
 }
 
-bool Pawn::move(Board board, Square start, Square end) {
+bool Pawn::move(Square &start, Square &end) {
     if (end.getPiece()->getIsWhite() == this->getIsWhite()){
         cout << "white piece already there\n";
         return false;
@@ -59,16 +60,24 @@ char Knight::getType() const {
         return 'k';
 }
 
-bool Knight::move(Board board, Square start, Square end) {
-    if (end.getPiece()->getIsWhite() == this->getIsWhite()){
-        cout << "white piece already there\n";
+bool Knight::move(Square &start, Square &end) {
+    if (end.getPiece() != nullptr
+        && end.getPiece()->getIsWhite() == start.getPiece()->getIsWhite()){
+        cout << "Your own piece is there\n";
         return false;
     }
     int x = abs(start.getX() - end.getX());
     int y = abs(start.getY() - end.getY());
-    if (x * y == 2)
+    if (x * y == 2){
+        cout << "VALID KNIGHT MOVE\n";
         return true;
-    else
+    }
+    else{
+        cout << x << endl;
+        cout << y << endl;
+        cout << x * y << endl;
+        cout << "INVALID KNIGHT MOVE\n";
         return false;
+    }
 }
 

@@ -3,9 +3,14 @@
 using std::endl;
 using std::cout;
 
+//Player
 Player::Player(bool isHuman, bool isWhitePlayer) {
     this->isHuman = isHuman;
     this->isWhitePlayer = isWhitePlayer;
+}
+
+bool Player::getIsWhitePlayer() {
+    return isWhitePlayer;
 }
 
 // Human

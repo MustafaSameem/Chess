@@ -15,16 +15,29 @@ bool Engine::makeMove(Player &activePlayer, int startX, int startY, int endX, in
     Square* start = board.getSquare(startX, startY);
     Square* end = board.getSquare(endX, endY);
     Move* activeMove = new Move(activePlayer, *start, *end);
+    //Piece that is being manipulated
+    Piece* movingPiece = activeMove->getStartSquare()->getPiece();
 
+    //check if it is the player's turn
     if(playerTurn != &activePlayer){
         cout << "Not the player's turn\n";
         return false;
     }
-
-    if(activeMove->getStartSquare()->getPiece() == nullptr){
+    //check is a piece exists in the start square
+    if(movingPiece == nullptr){
         cout << "No piece in selected start square\n";
         return false;
     }
+    //check is the player and piece color match
+    if (activePlayer.getIsWhitePlayer() != movingPiece->getIsWhite()){
+        cout << "Player and piece color do not match\n";
+        return false;
+    }
+
+
+
+
+    //when all conditions checked, proceed to make move
 
 
 

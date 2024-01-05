@@ -6,7 +6,11 @@ private:
     bool isWhitePlayer;
 
 public:
+    //constructor
     Player(bool isHuman, bool isWhitePlayer);
+    //getter
+    bool getIsWhitePlayer();
+    //methods
     virtual void playerType() = 0;
 };
 

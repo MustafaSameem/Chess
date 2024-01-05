@@ -24,7 +24,7 @@ public:
     bool getIsDead() const;
     bool getIsWhite() const;
     //methods
-    virtual bool move(Board board, Square start, Square end) = 0;
+    virtual bool move(Square &start, Square &end) = 0;
     virtual char getType() const = 0;
 };
 
@@ -35,17 +35,9 @@ public:
     //constructor
     Pawn(bool isWhite);
     //methods
-    bool move(Board board, Square start, Square end);
+    bool move(Square &start, Square &end);
     char getType() const;
 };
-
-
-
-
-
-
-
-
 
 
 
@@ -57,7 +49,7 @@ public:
     //constructor
     Knight(bool isWhite);
     //methods
-    bool move(Board board, Square start, Square end);
+    bool move(Square &start, Square &end);
     char getType() const;
 };
 

@@ -5,7 +5,7 @@
 Square::Square() {
     this->x = 99;
     this->y = 99;
-    this-> piece = nullptr;
+    this->piece = nullptr;
 }
 
 Square::Square(int x, int y, Piece* piece) {
