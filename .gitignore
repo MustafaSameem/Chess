@@ -1,0 +1,11 @@
+# Ignore build artifacts
+build/
+cmake-build-debug/
+
+# Ignore compiled binaries
+*.exe
+*.out
+*.o
+
+# Ignore user-specific files or directories
+.vscode/
