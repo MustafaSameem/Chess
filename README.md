@@ -2,6 +2,9 @@
 
 This is a simple chess game implementation in C++ using SFML for the graphical user interface.
 
+![Chessboard](images/Chessboard_window.mp4)
+
+
 ## Overview
 
 The project is organized into different components:
