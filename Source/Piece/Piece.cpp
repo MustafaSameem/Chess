@@ -44,7 +44,7 @@ char Pawn::getType() const {
 }
 
 bool Pawn::move(Board board, Square &start, Square &end) {
-    //Check if the destination square has the player's own piece
+    //Check if the end square has the player's own piece
     if (end.getPiece() != nullptr && end.getPiece()->getIsWhite() == start.getPiece()->getIsWhite()){
         cout << "Your own piece is there\n";
         return false;
@@ -53,9 +53,14 @@ bool Pawn::move(Board board, Square &start, Square &end) {
     int deltaY = end.getY() - start.getY();
     //White pawn functionality
     if(start.getPiece()->getIsWhite()){
-        //Check valididity of position
+        //Check Y movement
         if(deltaY < 1 || deltaY > 2){
-            cout << "White pawn cannot perform this move" << endl;
+            cout << "White pawn cannot perform this vertical move" << endl;
+            return false;
+        }
+        //Check X movement
+        if(end.getPiece() == nullptr && deltaX != 0){
+            cout << "White pawn cannot perform this horizontal move" << endl;
             return false;
         }
         //Check if it is first turn
@@ -81,32 +86,38 @@ bool Pawn::move(Board board, Square &start, Square &end) {
         }
     }
     //Black pawn functionality
-    else if(!start.getPiece()->getIsWhite()){
-        //Check valididity of position
-        if(deltaY < -2 || deltaY > -1){
-            cout << "Black pawn cannot perform this move" << endl;
+    else if
+    (!start.getPiece()->getIsWhite()) {
+        //Check Y movement
+        if (deltaY < -2 || deltaY > -1) {
+            cout << "Black pawn cannot perform this vertical move" << endl;
             return false;
         }
-    }
-    //Check if it is first turn
-    if(start.getY() != 6 && deltaY == -2){
-        cout << "Cannot move 2 squares if not in starting position" << endl;
-        return false;
-    }
-    //Check if a piece blocking the way
-    if(deltaX == 0){
-        for(int y=start.getY()-1; y>=end.getY(); y--){
-            if (board.getSquare(start.getX(),y)->getPiece() != nullptr){
-                cout << "There is a piece in [" << start.getX() << "," << y << "] blocking the way" << endl;
-                return false;
+        //Check X movement
+        if(end.getPiece() == nullptr && deltaX != 0){
+            cout << "Black pawn cannot perform this horizontal move" << endl;
+            return false;
+        }
+        //Check if it is first turn
+        if (start.getY() != 6 && deltaY == -2) {
+            cout << "Cannot move 2 squares if not in starting position" << endl;
+            return false;
+        }
+        //Check if a piece blocking the way
+        if (deltaX == 0) {
+            for (int y = start.getY() - 1; y >= end.getY(); y--) {
+                if (board.getSquare(start.getX(), y)->getPiece() != nullptr) {
+                    cout << "There is a piece in [" << start.getX() << "," << y << "] blocking the way" << endl;
+                    return false;
+                }
             }
         }
-    }
-    //Check if a pawn can capture
-    if(deltaY == -1 && deltaX == -1 || deltaX == 1){
-        if(board.getSquare(end.getX(), end.getY())->getPiece() == nullptr){
-            cout << "No pieces to capture" << endl;
-            return false;
+        //Check if a pawn can capture
+        if (deltaY == -1 && deltaX == -1 || deltaX == 1) {
+            if (board.getSquare(end.getX(), end.getY())->getPiece() == nullptr) {
+                cout << "No pieces to capture" << endl;
+                return false;
+            }
         }
     }
     //All conditions passed
