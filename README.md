@@ -29,4 +29,4 @@ The front end uses SFML to create a graphical user interface for the chess game.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/chess-project.git
+   git clone https://github.com/MustafaSameem/Chess.git
