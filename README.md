@@ -1,6 +1,6 @@
 # Chess Project
 
-This is a chess game implementation in purely done in C++ for the backend and the GUI is done with SFML.
+This is a chess game implementation done purely in C++ for the logic and the GUI is done with SFML.
 
 
 https://github.com/MustafaSameem/Chess/assets/111101673/b8d9d822-d4ad-4ec7-876a-e0f2b2e43cb5
